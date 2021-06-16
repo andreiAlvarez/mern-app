@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 require("dotenv").config();
+const cors = require("cors");
 
 // connect DB
 mongoose
@@ -14,6 +15,7 @@ mongoose
   .then(() => console.log("mongoDB is connected"))
   .catch((error) => console.log(error));
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/auth", require("./routes/user"));
